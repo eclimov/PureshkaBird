@@ -1,5 +1,7 @@
 package com.pureshkabird.game.GameWorld;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.pureshkabird.game.GameObjects.Bird;
@@ -32,40 +34,45 @@ public class GameWorld {
 		ground = new Rectangle(0, midPointY + 66, 137, 11);
 	}
 
-	public void update(float delta) {
-		runTime += delta;
+    public void update(float delta) {
+        this.runTime += delta;
+        switch (currentState) {
+            case MENU:
+                break;
+            case READY:
+                updateMusic(0.01f);
+                break;
+            case RUNNING:
+                updateRunning(delta);
+                return;
+            case GAMEOVER:
+                updateMusic(-0.01f);
+                return;
+            case HIGHSCORE:
+                updateMusic(-0.01f);
+                return;
+            default:
+                return;
+        }
+        updateReady(delta);
+        updateMusic(0.1f);
+    }
 
-		switch (currentState) {
-		case READY:
-			if(AssetLoader.music.isPlaying()){
-				if(AssetLoader.music.getVolume() < 1.00){
-					AssetLoader.music.setVolume((float) (AssetLoader.music.getVolume() + 0.05));
-				}
-				else{
-					AssetLoader.music.play();
-				}
-			}
-		case MENU:
-			updateReady(delta);
-			break;
-
-		case RUNNING:
-			//System.out.println(AssetLoader.music.getVolume());
-			updateRunning(delta);
-			if(AssetLoader.music.isPlaying()){
-				if(AssetLoader.music.getVolume() > 0.00){
-					AssetLoader.music.setVolume((float) (AssetLoader.music.getVolume() - 0.01));
-				}
-				else{
-					AssetLoader.music.stop();
-				}
-			}
-			break;
-		default:
-			break;
-		}
-
-	}
+    private void updateMusic(float volumeIncrement) {
+        if (!AssetLoader.getMusicSettings()) {
+            AssetLoader.pauseMusic();
+        } else if (volumeIncrement > 0) {
+            if (!AssetLoader.music.isPlaying()) {
+                AssetLoader.playMusic();
+            } else if (AssetLoader.music.getVolume() < 0.5f) {
+                AssetLoader.music.setVolume(AssetLoader.music.getVolume() + volumeIncrement);
+            }
+        } else if (AssetLoader.music.getVolume() > 0.1f) {
+            AssetLoader.music.setVolume(AssetLoader.music.getVolume() + volumeIncrement);
+        } else {
+            AssetLoader.pauseMusic();
+        }
+    }
 
 	private void updateReady(float delta) {
 		bird.updateReady(runTime);
@@ -83,7 +90,7 @@ public class GameWorld {
 		if (scroller.collides(bird) && bird.isAlive()) {
 			scroller.stop();
 			bird.die();
-			AssetLoader.dead.play();
+			AssetLoader.play(AssetLoader.dead);
 			renderer.prepareTransition(255, 255, 255, .3f);
 
 			//AssetLoader.fall.play();
@@ -105,8 +112,10 @@ public class GameWorld {
 			if (score > AssetLoader.getHighScore()) {
 				AssetLoader.setHighScore(score);
 				currentState = GameState.HIGHSCORE;
+                Input input = Gdx.input;
+                input.vibrate(200);
 			}
-			AssetLoader.fall.play();
+            AssetLoader.play(AssetLoader.fall);
 		}
 	}
 
@@ -138,7 +147,6 @@ public class GameWorld {
 	public void ready() {
 		currentState = GameState.READY;
 		renderer.prepareTransition(0, 0, 0, 1f);
-		AssetLoader.music.play();
 	}
 
 	public void restart() {

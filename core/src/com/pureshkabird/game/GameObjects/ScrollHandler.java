@@ -88,31 +88,35 @@ public class ScrollHandler {
 						+ bird.getWidth()) {
 			addScore(1);
 			pipe1.setScored(true);
-			if(r.nextInt() % 2 == 0)
-				AssetLoader.coin2.play();
+			if(r.nextInt() % 2 == 0) {
+                AssetLoader.play(AssetLoader.coin2);
+            }
 			else{
-				AssetLoader.coin1.play();
+                AssetLoader.play(AssetLoader.coin1);
 			}
-			//AssetLoader.coin1.play();
 		} else if (!pipe2.isScored()
 				&& pipe2.getX() + (pipe2.getWidth() / 2) < bird.getX()
 						+ bird.getWidth()) {
 			addScore(1);
 			pipe2.setScored(true);
-			if(r.nextInt() % 2 == 0)
-				AssetLoader.coin2.play();
+			if(r.nextInt() % 2 == 0) {
+                AssetLoader.play(AssetLoader.coin2);
+            }
 			else{
-				AssetLoader.coin1.play();
+                AssetLoader.play(AssetLoader.coin1);
 			}
-			//AssetLoader.coin1.play();
 
 		} else if (!pipe3.isScored()
 				&& pipe3.getX() + (pipe3.getWidth() / 2) < bird.getX()
 						+ bird.getWidth()) {
 			addScore(1);
 			pipe3.setScored(true);
-			AssetLoader.coin1.play();
-
+			if(r.nextInt() % 2 == 0) {
+                AssetLoader.play(AssetLoader.coin2);
+            }
+			else{
+                AssetLoader.play(AssetLoader.coin1);
+			}
 		}
 
 		return (pipe1.collides(bird) || pipe2.collides(bird) || pipe3

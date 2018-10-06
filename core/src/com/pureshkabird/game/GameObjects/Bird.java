@@ -46,7 +46,7 @@ public class Bird {
 		if (position.y < -13) {
 			position.y = -13;
 			velocity.y = 0;
-			AssetLoader.transition.play();
+			AssetLoader.play(AssetLoader.transition);
 		}
 		////////////////////////////////////
 		/*if(position.y > 130 && isAlive){
@@ -100,7 +100,7 @@ public class Bird {
 	public void onClick() {
 		if (isAlive) {
 			if(position.y > 0){
-				AssetLoader.flap.play();	
+                AssetLoader.play(AssetLoader.flap);
 			}
 			velocity.y = -140;
 			//////////////////////

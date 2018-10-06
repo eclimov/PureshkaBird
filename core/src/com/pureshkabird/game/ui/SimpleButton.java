@@ -39,7 +39,7 @@ public class SimpleButton {
 		if(x >= screenWidth){
 			x = -width;
 			bounds.x = -width;
-			AssetLoader.transition.play();
+			AssetLoader.play(AssetLoader.transition);
 		}
 		x+=0.3;
 		bounds.x+=0.3;
@@ -65,11 +65,8 @@ public class SimpleButton {
 		// It only counts as a touchUp if the button is in a pressed state.
 		if (bounds.contains(screenX, screenY) && isPressed) {
 			isPressed = false;
-			AssetLoader.flap.play();
+            AssetLoader.play(AssetLoader.flap);
 			return true;
-		}
-		else{
-			AssetLoader.dead.play();
 		}
 		
 		// Whenever a finger is released, we will cancel any presses.

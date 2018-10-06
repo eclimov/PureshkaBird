@@ -7,15 +7,16 @@ import com.pureshkabird.game.Screens.SplashScreen;
 import com.pureshkabird.game.PBHelpers.AssetLoader;
 
 public class PureshkaBirdGame extends Game {
+	boolean isOnline;
 	int shift;
-	PureshkaBirdGame(int s){
-		shift = s;
-	}
+	PureshkaBirdGame(boolean isOnline) {
+        this.isOnline = isOnline;
+    }
 
 	@Override
 	public void create() {
 		AssetLoader.load();
-		setScreen(new SplashScreen(this,shift));
+		setScreen(new SplashScreen(this, this.isOnline));
 	}
 
 	@Override

@@ -23,23 +23,29 @@ import com.pureshkabird.game.TweenAccessors.Value;
 import com.pureshkabird.game.TweenAccessors.ValueAccessor;
 import com.pureshkabird.game.PBHelpers.AssetLoader;
 import com.pureshkabird.game.PBHelpers.InputHandler;
-import com.pureshkabird.game.ui.SimpleButton;;
+import com.pureshkabird.game.ui.LinkButton;
+import com.pureshkabird.game.ui.SimpleButton;
+import com.pureshkabird.game.ui.SwitchButton;;
 
 public class GameRenderer {
 
 	private GameWorld myWorld;
 	private OrthographicCamera cam;
+    private Animation fingerPointerAnimation;
 	private ShapeRenderer shapeRenderer;
 
 	private SpriteBatch batcher;
 
 	private int midPointY;
+    private SwitchButton musicSwitchButton;
+    private SwitchButton soundSwitchButton;
 
 	// Game Objects
 	private Bird bird;
 	private ScrollHandler scroller;
 	private Grass frontGrass, backGrass;
 	private Pipe pipe1, pipe2, pipe3;
+	private LinkButton rateButton;
 
 	// Game Assets
 	private TextureRegion bg, grass, birdMid, skullUp, skullDown, bar, ready,
@@ -59,8 +65,10 @@ public class GameRenderer {
 		myWorld = world;
 
 		this.midPointY = midPointY;
-		this.menuButtons = ((InputHandler) Gdx.input.getInputProcessor())
-				.getMenuButtons();
+		this.menuButtons = ((InputHandler) Gdx.input.getInputProcessor()).getMenuButtons();
+        this.rateButton = ((InputHandler) Gdx.input.getInputProcessor()).getRateButton();
+        this.soundSwitchButton = ((InputHandler) Gdx.input.getInputProcessor()).getSoundSwitchButton();
+        this.musicSwitchButton = ((InputHandler) Gdx.input.getInputProcessor()).getMusicSwitchButton();
 
 		cam = new OrthographicCamera();
 		cam.setToOrtho(true, 136, gameHeight);
@@ -91,6 +99,7 @@ public class GameRenderer {
 		bg = AssetLoader.bg;
 		grass = AssetLoader.grass;
 		birdAnimation = AssetLoader.birdAnimation;
+        this.fingerPointerAnimation = AssetLoader.fingerPointerAnimation;
 		birdMid = AssetLoader.bird;
 		///////////////////////////////////////
 		//birdMid = AssetLoader.characterRun3;
@@ -157,6 +166,16 @@ public class GameRenderer {
 				bird.getWidth(), bird.getHeight(), 1, 1, bird.getRotation());
 	}
 
+    private void drawFingerPointer(float runTime) {
+        batcher.draw(
+				(TextureRegion) this.fingerPointerAnimation.getKeyFrame(runTime),
+                45.0f,
+                (float) (this.midPointY + 5),
+                15.0f,
+                21.0f
+        );
+    }
+
 	private void drawBird(float runTime) {
 
 		if (bird.shouldntFlap()) {
@@ -174,7 +193,10 @@ public class GameRenderer {
 	}
 
 	private void drawMenuUI() {
-		batcher.draw(zbLogo, 136 / 2 - 56, midPointY - 50,
+		batcher.draw(
+		        zbLogo,
+                12,  // 136 / 2 - 56
+                midPointY - 50,
 				(zbLogo.getRegionWidth() / 1.2f)/4, (zbLogo.getRegionHeight() / 1.2f)/4);
 
 		for (SimpleButton button : menuButtons) {
@@ -217,7 +239,6 @@ public class GameRenderer {
 		}
 
 		int length = ("" + myWorld.getScore()).length();
-
 		AssetLoader.whiteFont.draw(batcher, "" + myWorld.getScore(),
 				104 - (2 * length), midPointY - 20);
 
@@ -226,6 +247,18 @@ public class GameRenderer {
 				104 - (2.5f * length2), midPointY - 3);
 
 	}
+
+    private void drawRateButton() {
+        this.rateButton.draw(this.batcher, (float) this.frontGrass.getWidth());
+    }
+
+    private void drawSoundSwitchButton() {
+        this.soundSwitchButton.draw(this.batcher, (float) this.frontGrass.getWidth());
+    }
+
+    private void drawMusicSwitchButton() {
+        this.musicSwitchButton.draw(this.batcher, (float) this.frontGrass.getWidth());
+    }
 
 	private void drawRetry() {
 		batcher.draw(retry, 36, midPointY + 10, 66, 14);
@@ -286,21 +319,28 @@ public class GameRenderer {
 			drawBird(runTime);
 			drawScore();
 		} else if (myWorld.isReady()) {
-			drawBird(runTime);
-			drawReady();
+            drawFingerPointer(runTime);
+            drawBird(runTime);
+            drawReady();
+            drawSoundSwitchButton();
+            drawMusicSwitchButton();
 		} else if (myWorld.isMenu()) {
-			drawBirdCentered(runTime);
-			drawMenuUI();
+            drawBirdCentered(runTime);
+            drawMenuUI();
+            drawSoundSwitchButton();
+            drawMusicSwitchButton();
 		} else if (myWorld.isGameOver()) {
-			drawScoreboard();
-			drawBird(runTime);
-			drawGameOver();
-			drawRetry();
+            drawScoreboard();
+            drawBird(runTime);
+            drawGameOver();
+            drawRetry();
+            drawRateButton();
 		} else if (myWorld.isHighScore()) {
-			drawScoreboard();
-			drawBird(runTime);
-			drawHighScore();
-			drawRetry();
+            drawScoreboard();
+            drawBird(runTime);
+            drawHighScore();
+            drawRetry();
+            drawRateButton();
 		}
 
 		drawGrass();

@@ -21,11 +21,15 @@ public class SplashScreen implements Screen {
 	private SpriteBatch batcher;
 	private Sprite sprite;
 	private PureshkaBirdGame game;
-	private int shift;
+	boolean isOnline;
+	private int shift = 0;
 	
-	public SplashScreen(PureshkaBirdGame game, int shift) {
+	public SplashScreen(PureshkaBirdGame game, boolean isOnline) {
 		this.game = game;
-		this.shift = shift;
+        this.isOnline = isOnline;
+        if (isOnline) {
+            this.shift = 100;
+        }
 	}
 
 	@Override
@@ -35,8 +39,7 @@ public class SplashScreen implements Screen {
 
 		float width = Gdx.graphics.getWidth();
 		float height = Gdx.graphics.getHeight();
-		float desiredWidth = width * .7f;
-		float scale = desiredWidth / sprite.getWidth();
+		float scale = width * .7f / sprite.getWidth();
 
 		sprite.setSize(sprite.getWidth() * scale, sprite.getHeight() * scale);
 		sprite.setPosition((width / 2) - (sprite.getWidth() / 2), (height / 2)
@@ -53,7 +56,7 @@ public class SplashScreen implements Screen {
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
 				game.setScreen(new GameScreen());
-				AssetLoader.start.play();
+                AssetLoader.play(AssetLoader.start);
 			}
 		};
 
@@ -71,14 +74,14 @@ public class SplashScreen implements Screen {
 		batcher.begin();
 		sprite.draw(batcher);
 		//System.out.println(Gdx.graphics.getWidth()+" x "+Gdx.graphics.getHeight());
-		AssetLoader.creditsFont.draw(batcher, "Eduard Climov", 
-				5, 
+		AssetLoader.creditsFont.draw(batcher, "Eduard Climov",
+				5,
 				Gdx.graphics.getHeight()-Gdx.graphics.getHeight()+(float)40+(float)shift);
-		AssetLoader.creditsFont.draw(batcher, "Alex Onuferco", 
-				Gdx.graphics.getWidth() - (float)130, 
+		AssetLoader.creditsFont.draw(batcher, "Alex Onuferco",
+				Gdx.graphics.getWidth() - (float)130,
 				Gdx.graphics.getHeight()-Gdx.graphics.getHeight()+(float)40+(float)shift);
-		AssetLoader.creditsFont.draw(batcher, "meme3team@gmail.com", 
-				Gdx.graphics.getWidth()/2 - (float)108, 
+		AssetLoader.creditsFont.draw(batcher, "meme3team@gmail.com",
+				Gdx.graphics.getWidth()/2 - (float)108,
 				Gdx.graphics.getHeight()-Gdx.graphics.getHeight()+(float)20+(float)shift);
 		batcher.end();
 	}

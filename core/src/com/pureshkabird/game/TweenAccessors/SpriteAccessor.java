@@ -22,9 +22,11 @@ public class SpriteAccessor implements TweenAccessor<Sprite> {
 	@Override
 	public void setValues(Sprite target, int tweenType, float[] newValues) {
 		switch (tweenType) {
-		case ALPHA:
-			target.setColor(1, 1, 1, newValues[0]);
-			break;
+			case ALPHA:
+				target.setColor(1, 1, 1, newValues[0]);
+				break;
+			default:
+				return;
 		}
 	}
 

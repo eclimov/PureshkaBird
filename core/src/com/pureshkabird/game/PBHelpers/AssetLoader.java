@@ -1,6 +1,7 @@
 package com.pureshkabird.game.PBHelpers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -20,7 +21,16 @@ public class AssetLoader {
 			ready, gameOver, highScore, scoreboard, star, noStar, retry;
 	public static Animation birdAnimation;
 	public static Sound dead, flap, coin1, coin2, fall, start, transition;
+	public static TextureRegion fingerPointer1;
+	public static TextureRegion fingerPointer2;
+	public static TextureRegion fingerPointer3;
+	public static Animation fingerPointerAnimation;
 	public static Music music;
+    public static TextureRegion musicSwitchOff;
+    public static TextureRegion musicSwitchOn;
+    public static TextureRegion soundSwitchOff;
+    public static TextureRegion soundSwitchOn;
+    public static TextureRegion rateLink;
 	public static BitmapFont font, shadow, whiteFont, creditsFont;
 	private static Preferences prefs;
 	public static ParticleEffect particleEffect;
@@ -39,15 +49,27 @@ public class AssetLoader {
 		playButtonDown = new TextureRegion(texture, 116, 332, 116, 64);
 		playButtonUp.flip(false, true);
 		playButtonDown.flip(false, true);
-		
-		ready = new TextureRegion(texture, 59*4, 83*4, 34*4, 7*4);
-		ready.flip(false, true);
+
+        rateLink = new TextureRegion(texture, 0, 396, 230, 70);
+        rateLink.flip(false, true);
+
+        soundSwitchOn = new TextureRegion(texture, 660, 168, 48, 48);
+        soundSwitchOff = new TextureRegion(texture, 708, 168, 48, 48);
+        soundSwitchOff.flip(false, true);
+        soundSwitchOn.flip(false, true);
+        musicSwitchOn = new TextureRegion(texture, 756, 168, 48, 48);
+        musicSwitchOff = new TextureRegion(texture, 804, 168, 48, 48);
+        musicSwitchOff.flip(false, true);
+        musicSwitchOn.flip(false, true);
+
+        ready = new TextureRegion(texture, 236, 332, 136, 28);
+        ready.flip(false, true);
 
 		retry = new TextureRegion(texture, 59*4, 110*4, 33*4, 7*4);
 		retry.flip(false, true);
-		
-		gameOver = new TextureRegion(texture, 59*4, 92*4, 46*4, 7*4);
-		gameOver.flip(false, true);
+
+        gameOver = new TextureRegion(texture, 236, 368, 184, 28);
+        gameOver.flip(false, true);
 
 		scoreboard = new TextureRegion(texture, 111*4, 83*4, 97*4, 37*4);
 		scoreboard.flip(false, true);
@@ -62,7 +84,6 @@ public class AssetLoader {
 		highScore.flip(false, true);
 
 		zbLogo = new TextureRegion(texture, 0, 216, 536, 96);
-		
 		zbLogo.flip(false, true);
 
 		bg = new TextureRegion(texture, 0, 0, 544, 168);
@@ -81,12 +102,17 @@ public class AssetLoader {
 		birdUp.flip(false, true);
 
 		TextureRegion[] birds = { birdDown, bird, birdUp };
-		
 		birdAnimation = new Animation(0.06f, birds);
 		birdAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
-		
-		birdAnimation = new Animation(0.06f, birds);
-		birdAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+
+        fingerPointer1 = new TextureRegion(texture, 852, 146, 50, 70);
+        fingerPointer1.flip(false, true);
+        fingerPointer2 = new TextureRegion(texture, 902, 146, 50, 70);
+        fingerPointer2.flip(false, true);
+        fingerPointer3 = new TextureRegion(texture, 952, 146, 50, 70);
+        fingerPointer3.flip(false, true);
+        fingerPointerAnimation = new Animation(0.3f, fingerPointer1, fingerPointer2, fingerPointer3);
+        fingerPointerAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 
 		skullUp = new TextureRegion(texture, 768, 0, 96, 56);
 		skullUp.flip(false,  true);
@@ -97,16 +123,16 @@ public class AssetLoader {
 		bar = new TextureRegion(texture, 544, 64, 96, 12);
 		bar.flip(false, true);
 
-		dead = Gdx.audio.newSound(Gdx.files.internal("data/dead.wav"));
-		flap = Gdx.audio.newSound(Gdx.files.internal("data/flap.wav"));
-		coin1 = Gdx.audio.newSound(Gdx.files.internal("data/coin1.wav"));
-		coin2 = Gdx.audio.newSound(Gdx.files.internal("data/coin2.wav"));
-		fall = Gdx.audio.newSound(Gdx.files.internal("data/fall.wav"));
-		start = Gdx.audio.newSound(Gdx.files.internal("data/start.wav"));
-		transition = Gdx.audio.newSound(Gdx.files.internal("data/transition.wav"));
-		music = Gdx.audio.newMusic(Gdx.files.internal("data/music.ogg"));
-		music.setLooping(true);
-		music.setVolume((float) 0.0);
+        dead = Gdx.audio.newSound(Gdx.files.internal("data/dead.ogg"));
+        flap = Gdx.audio.newSound(Gdx.files.internal("data/flap.ogg"));
+        coin1 = Gdx.audio.newSound(Gdx.files.internal("data/coin1.ogg"));
+        coin2 = Gdx.audio.newSound(Gdx.files.internal("data/coin2.ogg"));
+        fall = Gdx.audio.newSound(Gdx.files.internal("data/fall.ogg"));
+        start = Gdx.audio.newSound(Gdx.files.internal("data/start.ogg"));
+        transition = Gdx.audio.newSound(Gdx.files.internal("data/transition.ogg"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("data/music.ogg"));
+        music.setLooping(true);
+        music.setVolume((float)0);
 		
 		font = new BitmapFont(Gdx.files.internal("data/whitetext.fnt"));
 		font.getData().setScale(.25f, -.25f);
@@ -124,9 +150,18 @@ public class AssetLoader {
 		// Create (or retrieve existing) preferences file
 		prefs = Gdx.app.getPreferences("PureshkaBird");
 
-		if (!prefs.contains("highScore")) {
-			prefs.putInteger("highScore", 0);
-		}
+        if (!prefs.contains("highScore")) {
+            prefs.putInteger("highScore", 0);
+            prefs.flush();
+        }
+        if (!prefs.contains("soundSettings")) {
+            prefs.putBoolean("soundSettings", true);
+            prefs.flush();
+        }
+        if (!prefs.contains("musicSettings")) {
+            prefs.putBoolean("musicSettings", true);
+            prefs.flush();
+        }
 	}
 
 	public static void setHighScore(int val) {
@@ -138,18 +173,54 @@ public class AssetLoader {
 		return prefs.getInteger("highScore");
 	}
 
+    public static void setSoundSettings(boolean val) {
+        prefs.putBoolean("soundSettings", val);
+        prefs.flush();
+    }
+
+    public static boolean getSoundSettings() {
+        return prefs.getBoolean("soundSettings");
+    }
+
+    public static void play(Sound sound) {
+        if (getSoundSettings()) {
+            sound.play();
+        }
+    }
+
+    public static void setMusicSettings(boolean val) {
+        prefs.putBoolean("musicSettings", val);
+        prefs.flush();
+    }
+
+    public static boolean getMusicSettings() {
+        return prefs.getBoolean("musicSettings");
+    }
+
+    public static void playMusic() {
+        if (!music.isPlaying() && getMusicSettings()) {
+            music.play();
+        }
+    }
+
+    public static void pauseMusic() {
+        music.pause();
+    }
+
 	public static void dispose() {
-		// We must dispose of the texture when we are finished.
-		texture.dispose();
-
-		// Dispose sounds
-		dead.dispose();
-		flap.dispose();
-		coin1.dispose();
-		coin2.dispose();
-
-		font.dispose();
-		shadow.dispose();
+        // We must dispose assets when we are finished.
+	    texture.dispose();
+        dead.dispose();
+        flap.dispose();
+        coin1.dispose();
+        coin2.dispose();
+        fall.dispose();
+        start.dispose();
+        transition.dispose();
+        music.dispose();
+        font.dispose();
+        shadow.dispose();
+        creditsFont.dispose();
 	}
 
 }
