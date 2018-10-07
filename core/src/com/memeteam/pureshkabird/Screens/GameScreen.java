@@ -1,10 +1,10 @@
-package com.pureshkabird.game.Screens;
+package com.memeteam.pureshkabird.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.pureshkabird.game.GameWorld.GameRenderer;
-import com.pureshkabird.game.GameWorld.GameWorld;
-import com.pureshkabird.game.PBHelpers.InputHandler;
+import com.memeteam.pureshkabird.GameWorld.GameRenderer;
+import com.memeteam.pureshkabird.GameWorld.GameWorld;
+import com.memeteam.pureshkabird.PBHelpers.InputHandler;
 
 public class GameScreen implements Screen {
 

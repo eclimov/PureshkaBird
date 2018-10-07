@@ -1,9 +1,9 @@
-package com.pureshkabird.game.GameObjects;
+package com.memeteam.pureshkabird.GameObjects;
 
 import java.util.Random;
 
-import com.pureshkabird.game.GameWorld.GameWorld;
-import com.pureshkabird.game.PBHelpers.AssetLoader;
+import com.memeteam.pureshkabird.GameWorld.GameWorld;
+import com.memeteam.pureshkabird.PBHelpers.AssetLoader;
 
 public class ScrollHandler {
 

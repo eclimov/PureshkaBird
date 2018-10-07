@@ -1,4 +1,4 @@
-package com.pureshkabird.game.ui;
+package com.memeteam.pureshkabird.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

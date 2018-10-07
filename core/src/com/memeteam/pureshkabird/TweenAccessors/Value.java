@@ -1,4 +1,4 @@
-package com.pureshkabird.game.TweenAccessors;
+package com.memeteam.pureshkabird.TweenAccessors;
 
 public class Value {
 

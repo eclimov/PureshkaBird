@@ -1,15 +1,15 @@
-package com.pureshkabird.game.PBHelpers;
+package com.memeteam.pureshkabird.PBHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
-import com.pureshkabird.game.GameObjects.Bird;
-import com.pureshkabird.game.GameWorld.GameWorld;
-import com.pureshkabird.game.ui.LinkButton;
-import com.pureshkabird.game.ui.SimpleButton;
-import com.pureshkabird.game.ui.SwitchButton;
+import com.memeteam.pureshkabird.GameObjects.Bird;
+import com.memeteam.pureshkabird.GameWorld.GameWorld;
+import com.memeteam.pureshkabird.ui.LinkButton;
+import com.memeteam.pureshkabird.ui.SimpleButton;
+import com.memeteam.pureshkabird.ui.SwitchButton;
 
 public class InputHandler implements InputProcessor {
 	private Bird myBird;

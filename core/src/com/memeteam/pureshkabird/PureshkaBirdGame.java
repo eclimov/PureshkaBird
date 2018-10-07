@@ -1,10 +1,8 @@
-package com.pureshkabird.game;
+package com.memeteam.pureshkabird;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
-import com.pureshkabird.game.Screens.SplashScreen;
-import com.pureshkabird.game.PBHelpers.AssetLoader;
+import com.memeteam.pureshkabird.Screens.SplashScreen;
+import com.memeteam.pureshkabird.PBHelpers.AssetLoader;
 
 public class PureshkaBirdGame extends Game {
 	boolean isOnline;

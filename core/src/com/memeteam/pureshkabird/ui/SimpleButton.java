@@ -1,10 +1,9 @@
-package com.pureshkabird.game.ui;
+package com.memeteam.pureshkabird.ui;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import com.pureshkabird.game.PBHelpers.AssetLoader;
+import com.memeteam.pureshkabird.PBHelpers.AssetLoader;
 
 public class SimpleButton {
 

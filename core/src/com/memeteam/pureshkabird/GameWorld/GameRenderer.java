@@ -1,4 +1,4 @@
-package com.pureshkabird.game.GameWorld;
+package com.memeteam.pureshkabird.GameWorld;
 
 import java.util.List;
 
@@ -15,18 +15,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.pureshkabird.game.GameObjects.Bird;
-import com.pureshkabird.game.GameObjects.Grass;
-import com.pureshkabird.game.GameObjects.Pipe;
-import com.pureshkabird.game.GameObjects.ScrollHandler;
-import com.pureshkabird.game.TweenAccessors.Value;
-import com.pureshkabird.game.TweenAccessors.ValueAccessor;
-import com.pureshkabird.game.PBHelpers.AssetLoader;
-import com.pureshkabird.game.PBHelpers.InputHandler;
-import com.pureshkabird.game.ui.LinkFont;
-import com.pureshkabird.game.ui.LinkButton;
-import com.pureshkabird.game.ui.SimpleButton;
-import com.pureshkabird.game.ui.SwitchButton;;
+import com.memeteam.pureshkabird.GameObjects.Bird;
+import com.memeteam.pureshkabird.GameObjects.Grass;
+import com.memeteam.pureshkabird.GameObjects.Pipe;
+import com.memeteam.pureshkabird.GameObjects.ScrollHandler;
+import com.memeteam.pureshkabird.TweenAccessors.Value;
+import com.memeteam.pureshkabird.TweenAccessors.ValueAccessor;
+import com.memeteam.pureshkabird.PBHelpers.AssetLoader;
+import com.memeteam.pureshkabird.PBHelpers.InputHandler;
+import com.memeteam.pureshkabird.ui.LinkFont;
+import com.memeteam.pureshkabird.ui.LinkButton;
+import com.memeteam.pureshkabird.ui.SimpleButton;
+import com.memeteam.pureshkabird.ui.SwitchButton;;
 
 public class GameRenderer {
 

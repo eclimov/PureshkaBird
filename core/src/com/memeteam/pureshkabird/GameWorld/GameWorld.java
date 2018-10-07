@@ -1,12 +1,12 @@
-package com.pureshkabird.game.GameWorld;
+package com.memeteam.pureshkabird.GameWorld;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
-import com.pureshkabird.game.GameObjects.Bird;
-import com.pureshkabird.game.GameObjects.ScrollHandler;
-import com.pureshkabird.game.PBHelpers.AssetLoader;
+import com.memeteam.pureshkabird.GameObjects.Bird;
+import com.memeteam.pureshkabird.GameObjects.ScrollHandler;
+import com.memeteam.pureshkabird.PBHelpers.AssetLoader;
 
 public class GameWorld {
 

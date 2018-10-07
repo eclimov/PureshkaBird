@@ -1,4 +1,4 @@
-package com.pureshkabird.game;
+package com.memeteam.pureshkabird;
 
 import android.content.Context;
 import android.graphics.Color;

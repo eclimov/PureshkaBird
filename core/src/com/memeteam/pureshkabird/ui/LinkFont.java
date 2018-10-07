@@ -1,4 +1,4 @@
-package com.pureshkabird.game.ui;
+package com.memeteam.pureshkabird.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
-import com.pureshkabird.game.PBHelpers.AssetLoader;
+import com.memeteam.pureshkabird.PBHelpers.AssetLoader;
 
 public class LinkFont {
 

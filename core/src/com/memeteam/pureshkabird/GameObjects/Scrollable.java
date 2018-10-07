@@ -1,4 +1,4 @@
-package com.pureshkabird.game.GameObjects;
+package com.memeteam.pureshkabird.GameObjects;
 
 import com.badlogic.gdx.math.Vector2;
 

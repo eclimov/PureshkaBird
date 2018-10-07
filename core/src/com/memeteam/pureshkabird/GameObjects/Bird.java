@@ -1,8 +1,8 @@
-package com.pureshkabird.game.GameObjects;
+package com.memeteam.pureshkabird.GameObjects;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
-import com.pureshkabird.game.PBHelpers.AssetLoader;
+import com.memeteam.pureshkabird.PBHelpers.AssetLoader;
 
 public class Bird {
 

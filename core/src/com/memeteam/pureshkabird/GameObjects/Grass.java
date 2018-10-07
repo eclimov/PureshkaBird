@@ -1,4 +1,4 @@
-package com.pureshkabird.game.GameObjects;
+package com.memeteam.pureshkabird.GameObjects;
 
 public class Grass extends Scrollable {
 

@@ -1,7 +1,6 @@
-package com.pureshkabird.game.PBHelpers;
+package com.memeteam.pureshkabird.PBHelpers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;

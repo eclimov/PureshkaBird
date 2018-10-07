@@ -1,4 +1,4 @@
-package com.pureshkabird.game.Screens;
+package com.memeteam.pureshkabird.Screens;
 
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
@@ -11,9 +11,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.pureshkabird.game.TweenAccessors.SpriteAccessor;
-import com.pureshkabird.game.PBHelpers.AssetLoader;
-import com.pureshkabird.game.PureshkaBirdGame;
+import com.memeteam.pureshkabird.TweenAccessors.SpriteAccessor;
+import com.memeteam.pureshkabird.PBHelpers.AssetLoader;
+import com.memeteam.pureshkabird.PureshkaBirdGame;
 
 public class SplashScreen implements Screen {
 
