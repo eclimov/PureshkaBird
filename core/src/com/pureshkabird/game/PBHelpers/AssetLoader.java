@@ -31,9 +31,9 @@ public class AssetLoader {
     public static TextureRegion soundSwitchOff;
     public static TextureRegion soundSwitchOn;
     public static TextureRegion rateLink;
-	public static BitmapFont font, shadow, whiteFont, creditsFont;
+	public static BitmapFont font, shadow, whiteFont, creditsFont, clickableFont;
 	private static Preferences prefs;
-	public static ParticleEffect particleEffect;
+    public static ParticleEffect particleEffect;
 
 	public static void load() {
 
@@ -140,11 +140,15 @@ public class AssetLoader {
 		whiteFont = new BitmapFont(Gdx.files.internal("data/whitetext.fnt"));
 		whiteFont.getData().setScale(.1f, -.1f);
 
+		clickableFont = new BitmapFont(Gdx.files.internal("data/arial.fnt"), true);
+        clickableFont.getData().setScale(.2f, .2f);
+        clickableFont.setColor(Color.BLUE);
+
 		creditsFont = new BitmapFont(Gdx.files.internal("data/arial.fnt"));
 		creditsFont.getData().setScale(.6f, .6f);
 		creditsFont.setColor(Color.BLACK);
-		
-		shadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"));
+
+        shadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"));
 		shadow.getData().setScale(.25f, -.25f);
 
 		// Create (or retrieve existing) preferences file
@@ -221,6 +225,7 @@ public class AssetLoader {
         font.dispose();
         shadow.dispose();
         creditsFont.dispose();
+        clickableFont.dispose();
 	}
 
 }

@@ -23,6 +23,7 @@ import com.pureshkabird.game.TweenAccessors.Value;
 import com.pureshkabird.game.TweenAccessors.ValueAccessor;
 import com.pureshkabird.game.PBHelpers.AssetLoader;
 import com.pureshkabird.game.PBHelpers.InputHandler;
+import com.pureshkabird.game.ui.LinkFont;
 import com.pureshkabird.game.ui.LinkButton;
 import com.pureshkabird.game.ui.SimpleButton;
 import com.pureshkabird.game.ui.SwitchButton;;
@@ -58,6 +59,7 @@ public class GameRenderer {
 
 	// Buttons
 	private List<SimpleButton> menuButtons;
+	private LinkFont privacyPolicyLink;
 
 	private Color transitionColor;
 
@@ -69,6 +71,12 @@ public class GameRenderer {
         this.rateButton = ((InputHandler) Gdx.input.getInputProcessor()).getRateButton();
         this.soundSwitchButton = ((InputHandler) Gdx.input.getInputProcessor()).getSoundSwitchButton();
         this.musicSwitchButton = ((InputHandler) Gdx.input.getInputProcessor()).getMusicSwitchButton();
+        this.privacyPolicyLink = new LinkFont(
+                "Privacy Policy",
+                "http://207.154.226.2/sideprojects/pureshkabird/privacypolicy",
+                5,
+                (int)gameHeight - 30
+        );
 
 		cam = new OrthographicCamera();
 		cam.setToOrtho(true, 136, gameHeight);
@@ -202,11 +210,6 @@ public class GameRenderer {
 		for (SimpleButton button : menuButtons) {
 			button.draw(batcher,frontGrass.getWidth());
 		}
-
-		//AssetLoader.creditsFont.draw(batcher, "By:", 0, 0);
-		//AssetLoader.creditsFont.draw(batcher, "Eduard C.", 0, 6);
-		//AssetLoader.creditsFont.draw(batcher, "Alex O.", 0, 12);
-
 	}
 
 	private void drawScoreboard() {
@@ -284,6 +287,10 @@ public class GameRenderer {
 		batcher.draw(highScore, 22, midPointY - 50, 96, 14);
 	}
 
+    private void drawPrivacyPolicyLink() {
+	    this.privacyPolicyLink.update(batcher, cam);
+    }
+
 	public void render(float delta, float runTime) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -329,6 +336,7 @@ public class GameRenderer {
             drawMenuUI();
             drawSoundSwitchButton();
             drawMusicSwitchButton();
+            drawPrivacyPolicyLink();
 		} else if (myWorld.isGameOver()) {
             drawScoreboard();
             drawBird(runTime);
