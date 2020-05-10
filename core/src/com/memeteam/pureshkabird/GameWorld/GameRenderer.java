@@ -73,9 +73,9 @@ public class GameRenderer {
         this.musicSwitchButton = ((InputHandler) Gdx.input.getInputProcessor()).getMusicSwitchButton();
         this.privacyPolicyLink = new LinkFont(
                 "Privacy Policy",
-                "http://207.154.226.2/sideprojects/pureshkabird/privacypolicy",
-                5,
-                (int)gameHeight - 30
+                "https://docs.google.com/document/d/13VWNkc6Bbtf5rJzuPVqOpDnlTJhdErvxC_iuqdRayLU/edit?usp=sharing",
+                6,
+                52
         );
 
 		cam = new OrthographicCamera();

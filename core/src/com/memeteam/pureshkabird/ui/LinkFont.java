@@ -1,6 +1,7 @@
 package com.memeteam.pureshkabird.ui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -15,8 +16,6 @@ public class LinkFont {
     private GlyphLayout layout;
     private BitmapFont font;
 
-    private String text;
-
     private int posX;
     private int posY;
 
@@ -29,11 +28,11 @@ public class LinkFont {
      * @param posY Y position of the text
      */
     public LinkFont(String text, String link, int posX, int posY) {
-        this.text = text;
         this.posX = posX;
         this.posY = posY;
 
         font = AssetLoader.clickableFont;
+        font.setColor(Color.CORAL);
         layout = new GlyphLayout(font, text);
 
         this.link = link;

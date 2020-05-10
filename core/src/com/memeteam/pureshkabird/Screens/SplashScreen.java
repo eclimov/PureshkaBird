@@ -28,7 +28,7 @@ public class SplashScreen implements Screen {
 		this.game = game;
         this.isOnline = isOnline;
         if (isOnline) {
-            this.shift = 100;
+            this.shift = 120;
         }
 	}
 
