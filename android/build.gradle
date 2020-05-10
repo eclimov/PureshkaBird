@@ -20,8 +20,8 @@ android {
         applicationId "com.memeteam.pureshkabird"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 9
+        versionName "1.07"
     }
     buildTypes {
         release {
