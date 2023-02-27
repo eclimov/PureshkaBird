@@ -1,6 +1,6 @@
 android {
-    buildToolsVersion "28.0.3"
-    compileSdkVersion 28
+    buildToolsVersion "33.0.2"
+    compileSdkVersion 33
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -19,9 +19,9 @@ android {
     defaultConfig {
         applicationId "com.memeteam.pureshkabird"
         minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 11
-        versionName "1.08"
+        targetSdkVersion 33
+        versionCode 13
+        versionName "1.10"
     }
     buildTypes {
         release {
