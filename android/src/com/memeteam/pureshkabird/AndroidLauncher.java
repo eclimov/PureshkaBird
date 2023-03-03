@@ -50,7 +50,7 @@ public class AndroidLauncher extends AndroidApplication {
 
             // Create and setup the AdMob view
             AdView adView = new AdView(this);
-            adView.setAdUnitId("ca-app-pub-2356801943660362/3520696132");
+            adView.setAdUnitId("ca-app-pub-8932201865618296/8278697652");
 
             adView.setAdSize(AdSize.BANNER);
             adView.loadAd(new AdRequest.Builder().build());
