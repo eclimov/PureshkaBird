@@ -159,9 +159,7 @@ public class InputHandler implements InputProcessor {
 	}
 
 	@Override
-	public boolean scrolled(int amount) {
-		return false;
-	}
+	public boolean scrolled(float amountX, float amountY) { return false; }
 
 	private int scaleX(int screenX) {
 		return (int) (screenX / scaleFactorX);

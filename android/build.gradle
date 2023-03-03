@@ -18,10 +18,10 @@ android {
     }
     defaultConfig {
         applicationId "com.memeteam.pureshkabird"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 33
-        versionCode 14
-        versionName "1.11"
+        versionCode 15
+        versionName "1.12"
     }
     buildTypes {
         release {
