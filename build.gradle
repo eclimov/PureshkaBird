@@ -10,7 +10,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.4'
-
     }
 }
 
@@ -21,7 +20,7 @@ allprojects {
     version = '1.0'
     ext {
         appName = "pureshka-bird-game"
-        gdxVersion = '1.9.14'
+        gdxVersion = '1.11.0'
     }
 
     repositories {
@@ -44,14 +43,13 @@ project(":android") {
     dependencies {
         implementation project(":core")
         implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
 
-        implementation 'com.android.support:appcompat-v7:28.0.0'
-        implementation 'com.google.android.gms:play-services-ads:17.2.1'
+        implementation 'androidx.appcompat:appcompat:1.6.1'
+        implementation 'com.google.android.gms:play-services-ads:21.5.0'
     }
 }
 
@@ -64,7 +62,7 @@ project(":core") {
 
         implementation 'com.github.arcnor:universal-tween-engine:6.3.4'
         implementation 'com.github.arcnor:universal-tween-engine:6.3.4:sources'
-        implementation 'com.google.android.gms:play-services-ads:17.2.1'
+        implementation 'com.google.android.gms:play-services-ads:21.5.0'
     }
 }
 
